@@ -2,8 +2,12 @@ function printInventory(inputs)
 {
   var allItems=loadAllItems();
   var item_sum=new Array();
+  var discount_goods_num=new Array();
   for(var i=0;i<allItems.length;i++)
-       item_sum[i]=0;
+      {
+        discount_goods_num[i]=0;
+        item_sum[i]=0;
+      }
   for (var i=0;i<inputs.length;i++)
     {
       for (var j=0;j<allItems.length;j++)
@@ -26,41 +30,23 @@ function printInventory(inputs)
   var num_1,num_2,num;
   var sum_1=0;
   var sum_2=0;
-
-var discount_goods_num=new Array();
-for(var i=0;i<allItems.length;i++)
-     discount_goods_num[i]=0;
-
   for(i=0;i<allItems.length;i++)
     {
       if(item_sum[i]!=0)
       {
         for(j=0;j<promotion[0].barcodes.length;j++)
           {
-
-            // string_1+='名称：'+allItems[i].name +', 数量 : '+item_sum[i]+allItems[i].unit+
-            //           ', 单价:'+allItems[i].price.toFixed(2)+'(元)'+'， 小计：'+
-            //           (item_sum[i]*allItems[i].price).toFixed(2)+'(元)\n';
-
             if(allItems[i].barcode==promotion[0].barcodes[j])
             {
                 num_1=Math.floor(item_sum[i]/3|0);
-                // num_2=item_sum[i]%3;
-                // num=num_1*2+num_2;
                 discount_goods_num[i]=num_1;
-                // item_sum[i]=num;
                 if(num_1>=1)
                 {
                   string_2+='名称：'+allItems[i].name +'，数量：'+num_1+allItems[i].unit+'\n';
                   sum_2+=allItems[i].price * num_1;
                 }
-                // string_1+='名称：'+allItems[i].name +', 数量 : '+item_sum[i]+allItems[i].unit+
-                //           ', 单价:'+allItems[i].price.toFixed(2)+'(元)'+'， 小计：'+
-                //           (item_sum[i]*allItems[i].price).toFixed(2)+'(元)\n';
               }
-
           }
-          // console.log(item[i]);
           string_1+='名称：'+allItems[i].name +'，数量：'+item_sum[i]+allItems[i].unit+
                      '，单价：'+allItems[i].price.toFixed(2)+'(元)，小计：'+
                       ((item_sum[i]-discount_goods_num[i])*allItems[i].price).toFixed(2)+'(元)\n';
@@ -70,74 +56,3 @@ for(var i=0;i<allItems.length;i++)
      console.log(string_1+'----------------------\n' +string_2+'----------------------\n'+
                  '总计：'+ sum_1.toFixed(2) +'(元)\n' +'节省：'+sum_2.toFixed(2)+'(元)\n'+'**********************');
 }
-
-// var inputs = [
-//         'ITEM000001',
-//         'ITEM000001',
-//         'ITEM000001',
-//         'ITEM000001',
-//         'ITEM000001',
-//         'ITEM000003-2',
-//         'ITEM000005',
-//         'ITEM000005',
-//         'ITEM000005'
-//     ];
-// printInventory(inputs);
-//
-//
-//
-//
-//
-// function loadAllItems() {
-//     return [
-//         {
-//             barcode: 'ITEM000000',
-//             name: '可口可乐',
-//             unit: '瓶',
-//             price: 3.00
-//         },
-//         {
-//             barcode: 'ITEM000001',
-//             name: '雪碧',
-//             unit: '瓶',
-//             price: 3.00
-//         },
-//         {
-//             barcode: 'ITEM000002',
-//             name: '苹果',
-//             unit: '斤',
-//             price: 5.50
-//         },
-//         {
-//             barcode: 'ITEM000003',
-//             name: '荔枝',
-//             unit: '斤',
-//             price: 15.00
-//         },
-//         {
-//             barcode: 'ITEM000004',
-//             name: '电池',
-//             unit: '个',
-//             price: 2.00
-//         },
-//         {
-//             barcode: 'ITEM000005',
-//             name: '方便面',
-//             unit: '袋',
-//             price: 4.50
-//         }
-//     ];
-// }
-//
-// function loadPromotions() {
-//     return [
-//         {
-//             type: 'BUY_TWO_GET_ONE_FREE',
-//             barcodes: [
-//                 'ITEM000000',
-//                 'ITEM000001',
-//                 'ITEM000005'
-//             ]
-//         }
-//     ]
-// }
