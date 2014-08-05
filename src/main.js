@@ -148,7 +148,6 @@ function printPromotionText(goodsDetail ,promotionText){
   return promotionText;
 }
 
-
 function prepareGoodsListPrint(goodsList){
 
   var allItems=loadAllItems();
