@@ -10,11 +10,11 @@ function printInventory(inputs)
 }
 
 function getGoodsList(inputs){
-  // console.log(inputs[0].barcode);
+
    var barcodes = splitBarcode(inputs);
    var goodsQuantity = getgoodsQuantity(barcodes);
    getPromotionGoodsQuantity(goodsQuantity);
-    //  console.log(goodsQuantity);
+
    return goodsQuantity;
 
 }
@@ -53,7 +53,7 @@ function getgoodsQuantity(barcodes)
 
   return goodsQuantity;
 }
-//
+
 function judgeBarcodeHasExsited(barcode, goodsQuantity){
 
   var judgeValue;
@@ -68,10 +68,9 @@ function judgeBarcodeHasExsited(barcode, goodsQuantity){
   }
   return judgeValue;
 }
-// //
+
 function getPromotionGoodsQuantity(goodsQuantity){
-  // var promotions=loadPromotions();
-  // var PromotionGoodsQuantity = [];
+
   var judgePromotion;
 
   for(var i=0; i<goodsQuantity.length; i++){
@@ -81,21 +80,20 @@ function getPromotionGoodsQuantity(goodsQuantity){
     }
   }
 }
-//
+
 function getJudgePromotion(barcode){
 
   var judgeValue;
+
   var promotions=loadPromotions();
-  // console.log(barcode);
   for(var i=0; i<promotions[0].barcodes.length; i++){
-    // console.log(promotions[0].barcodes);
     if(barcode === promotions[0].barcodes[i])
       judgeValue = true;
   }
 
   return judgeValue;
 }
-//
+
 function getgoodsListPrint(goodsList){
   var itemText = '',
       promotionText = '',
@@ -105,15 +103,11 @@ function getgoodsListPrint(goodsList){
   var goodsDetail = [];
   for(var i=0; i<goodsList.length; i++){
     goodsDetail.push(prepareGoodsListPrint(goodsList[i]));
-// console.log(goodsDetail);
+
      totalMoney += goodsDetail[i].everyTotalMoney;
-    // console.log(goodsDetail[i].everyTotalMoney);
      saveMoney += goodsDetail[i].everySaveMoney;
   }
 
-   console.log(goodsDetail);
-//
-//
   itemText = printItemText(goodsDetail,itemText);
   promotionText = printPromotionText(goodsDetail ,promotionText);
 
@@ -129,7 +123,7 @@ function getgoodsListPrint(goodsList){
 
 
 }
-//
+
 function printItemText(goodsDetail,itemText){
 
   for(var i=0; i<goodsDetail.length; i++){
@@ -140,8 +134,8 @@ function printItemText(goodsDetail,itemText){
   return itemText;
 
 }
-//
-//
+
+
 function printPromotionText(goodsDetail ,promotionText){
 
   for(var i=0; i<goodsDetail.length; i++){
@@ -153,8 +147,8 @@ function printPromotionText(goodsDetail ,promotionText){
   }
   return promotionText;
 }
-//
-//
+
+
 function prepareGoodsListPrint(goodsList){
 
   var allItems=loadAllItems();
@@ -175,5 +169,4 @@ function prepareGoodsListPrint(goodsList){
     }
   }
   return goodsDetail;
-
 }
