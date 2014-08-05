@@ -2,14 +2,13 @@ function printInventory(inputs)
 {
 
   var goodsList = getGoodsList(inputs);
-//  console.log();
 
   var goodsListPrint = getgoodsListPrint(goodsList);   //goodList = goodQuantity
 
   console.log (goodsListPrint);
 
 }
-//
+
 function getGoodsList(inputs){
   // console.log(inputs[0].barcode);
    var barcodes = splitBarcode(inputs);
@@ -19,7 +18,7 @@ function getGoodsList(inputs){
    return goodsQuantity;
 
 }
-// //
+
 function splitBarcode(inputs){
 
   var barcodes = [];
